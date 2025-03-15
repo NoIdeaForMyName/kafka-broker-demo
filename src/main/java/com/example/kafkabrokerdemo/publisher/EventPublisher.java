@@ -8,6 +8,7 @@ package com.example.kafkabrokerdemo.publisher;
 - akcja po opublikowaniu
  */
 
+import com.example.kafkabrokerdemo.kafkaconfig.KafkaConfig;
 import org.apache.kafka.clients.producer.*;
 import com.example.kafkabrokerdemo.event.Event;
 
@@ -26,10 +27,10 @@ public class EventPublisher implements Runnable {
     private final Event event;
     private boolean start;
 
-    public EventPublisher(Properties kafkaProp, Event event, int maxTimeIntervalMs, boolean randomInterval) {
+    public EventPublisher(Event event, int maxTimeIntervalMs, boolean randomInterval) {
         this.maxTimeIntervalMs = maxTimeIntervalMs;
         this.randomInterval = randomInterval;
-        this.producer = new KafkaProducer<>(kafkaProp);
+        this.producer = new KafkaProducer<>(KafkaConfig.properties);
         this.event = event;
         this.start = false;
 
