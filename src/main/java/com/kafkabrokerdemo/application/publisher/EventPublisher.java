@@ -14,7 +14,6 @@ import com.kafkabrokerdemo.domain.event.Event;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.Timestamp;
 import java.util.concurrent.TimeUnit;
 
 public class EventPublisher implements Runnable {
