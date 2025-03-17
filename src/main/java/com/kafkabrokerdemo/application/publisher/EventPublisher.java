@@ -1,4 +1,4 @@
-package com.example.kafkabrokerdemo.publisher;
+package com.kafkabrokerdemo.application.publisher;
 
 /*
 - typ zdarzenia (typ generyczny)
@@ -8,12 +8,11 @@ package com.example.kafkabrokerdemo.publisher;
 - akcja po opublikowaniu
  */
 
-import com.example.kafkabrokerdemo.kafkaconfig.KafkaConfig;
+import com.kafkabrokerdemo.application.kafkaconfig.KafkaConfig;
 import org.apache.kafka.clients.producer.*;
-import com.example.kafkabrokerdemo.event.Event;
+import com.kafkabrokerdemo.domain.event.Event;
 
 import java.sql.Timestamp;
-import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class EventPublisher implements Runnable {

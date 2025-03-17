@@ -1,9 +1,8 @@
-package com.example.kafkabrokerdemo.consumer;
+package com.kafkabrokerdemo.application.consumer;
 
-import com.example.kafkabrokerdemo.event.Event;
-import com.example.kafkabrokerdemo.event.Type3Event;
-import com.example.kafkabrokerdemo.event.Type4Event;
-import com.example.kafkabrokerdemo.kafkaconfig.KafkaConfig;
+import com.kafkabrokerdemo.domain.event.Type3Event;
+import com.kafkabrokerdemo.domain.event.Type4Event;
+import com.kafkabrokerdemo.application.kafkaconfig.KafkaConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.producer.Callback;
@@ -12,7 +11,6 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
 
 import java.time.Duration;
-import java.util.Properties;
 
 public class Type3EventConsumer extends EventConsumer {
 

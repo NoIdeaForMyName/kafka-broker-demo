@@ -1,10 +1,9 @@
-package com.example.kafkabrokerdemo.consumer;
+package com.kafkabrokerdemo.application.consumer;
 
-import com.example.kafkabrokerdemo.event.*;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
+import com.kafkabrokerdemo.domain.event.Event;
+import com.kafkabrokerdemo.domain.event.Type1Event;
+import com.kafkabrokerdemo.domain.event.Type2Event;
+import com.kafkabrokerdemo.domain.event.Type4Event;
 
 public class StartConsumers {
     public static void main(String[] args) {

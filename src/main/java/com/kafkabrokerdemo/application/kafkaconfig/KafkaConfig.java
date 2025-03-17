@@ -1,4 +1,4 @@
-package com.example.kafkabrokerdemo.kafkaconfig;
+package com.kafkabrokerdemo.application.kafkaconfig;
 
 import java.util.Properties;
 

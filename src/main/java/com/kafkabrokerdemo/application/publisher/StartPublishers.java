@@ -1,13 +1,9 @@
-package com.example.kafkabrokerdemo.publisher;
+package com.kafkabrokerdemo.application.publisher;
 
-import com.example.kafkabrokerdemo.event.Event;
-import com.example.kafkabrokerdemo.event.Type1Event;
-import com.example.kafkabrokerdemo.event.Type2Event;
-import com.example.kafkabrokerdemo.event.Type3Event;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
+import com.kafkabrokerdemo.domain.event.Event;
+import com.kafkabrokerdemo.domain.event.Type1Event;
+import com.kafkabrokerdemo.domain.event.Type2Event;
+import com.kafkabrokerdemo.domain.event.Type3Event;
 
 public class StartPublishers {
     public static void main(String[] args) {

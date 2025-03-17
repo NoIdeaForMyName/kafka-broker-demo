@@ -1,4 +1,4 @@
-package com.example.kafkabrokerdemo.event;
+package com.kafkabrokerdemo.domain.event;
 
 public abstract class Event {
 

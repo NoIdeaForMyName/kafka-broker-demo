@@ -1,7 +1,7 @@
-package com.example.kafkabrokerdemo.consumer;
+package com.kafkabrokerdemo.application.consumer;
 
-import com.example.kafkabrokerdemo.event.Event;
-import com.example.kafkabrokerdemo.kafkaconfig.KafkaConfig;
+import com.kafkabrokerdemo.domain.event.Event;
+import com.kafkabrokerdemo.application.kafkaconfig.KafkaConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
