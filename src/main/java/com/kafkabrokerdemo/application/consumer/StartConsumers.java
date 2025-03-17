@@ -1,11 +1,13 @@
 package com.kafkabrokerdemo.application.consumer;
 
-import com.kafkabrokerdemo.domain.event.Event;
-import com.kafkabrokerdemo.domain.event.Type1Event;
-import com.kafkabrokerdemo.domain.event.Type2Event;
-import com.kafkabrokerdemo.domain.event.Type4Event;
+import com.kafkabrokerdemo.domain.event.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class StartConsumers {
+
+    private static final Logger logger = LogManager.getLogger(StartConsumers.class);
+
     public static void main(String[] args) {
 
         // exercise 4
@@ -20,7 +22,7 @@ public class StartConsumers {
 
         // exercise 6
         final int TYPE_3_EVENT_CONSUMERS_NB = 1;
-        //final Event TYPE_3_EVENT = new Type3Event();
+        logger.info("Starting {} customers; event type: {}", TYPE_3_EVENT_CONSUMERS_NB, new Type3Event().getTopic());
         for (int i = 0; i < TYPE_3_EVENT_CONSUMERS_NB; i++) {
             EventConsumer c = new Type3EventConsumer();
             Thread t = new Thread(c);
@@ -35,6 +37,7 @@ public class StartConsumers {
     }
 
     private static void startConsumers(int n, Event event) {
+        logger.info("Starting {} customers; event type: {}", n, event.getTopic());
         for (int i = 0; i < n; i++) {
             EventConsumer c = new EventConsumer(event);
             Thread t = new Thread(c);

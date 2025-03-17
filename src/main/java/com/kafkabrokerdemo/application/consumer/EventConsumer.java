@@ -5,11 +5,15 @@ import com.kafkabrokerdemo.application.kafkaconfig.KafkaConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Timestamp;
 import java.time.Duration;
 import java.util.Collections;
 import java.util.Properties;
+
+
 
 public class EventConsumer implements Runnable {
 
@@ -21,6 +25,8 @@ public class EventConsumer implements Runnable {
     protected final KafkaConsumer<String, String> consumer;
     protected final Event event;
     protected boolean start;
+
+    protected static final Logger logger = LogManager.getLogger(EventConsumer.class);
 
     public EventConsumer(Event event) {
         consumerNb++;
@@ -37,11 +43,12 @@ public class EventConsumer implements Runnable {
 
     @Override
     public void run() {
+        logger.info("{} started with {} running", Thread.currentThread().getName(), toString());
         start = true;
         while(start) {
             ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(POLL_DURATION_MS));
             for(ConsumerRecord<String, String> record: records) {
-                System.out.println(toString() + "; Received message: " + record.value());
+                logger.info("{}; Received message:[{}]", toString(), record.value());
             }
             consumer.commitSync();
         }
@@ -50,10 +57,11 @@ public class EventConsumer implements Runnable {
 
     public void stop() {
         start = false;
+        logger.info("{} stopped with {} inside", Thread.currentThread().getName(), toString());
     }
 
     @Override
     public String toString() {
-        return String.format("Consumer:[ID-%d]; timestamp: %s", consumerID, new Timestamp(System.currentTimeMillis()));
+        return String.format("Consumer:[ID-%d; Topic-%s]", consumerID, event.getTopic());
     }
 }

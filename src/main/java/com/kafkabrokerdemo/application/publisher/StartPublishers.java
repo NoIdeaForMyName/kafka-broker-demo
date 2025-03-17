@@ -4,8 +4,13 @@ import com.kafkabrokerdemo.domain.event.Event;
 import com.kafkabrokerdemo.domain.event.Type1Event;
 import com.kafkabrokerdemo.domain.event.Type2Event;
 import com.kafkabrokerdemo.domain.event.Type3Event;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class StartPublishers {
+
+    private static final Logger logger = LogManager.getLogger(StartPublishers.class);
+
     public static void main(String[] args) {
 
         // exercise 1
@@ -32,13 +37,10 @@ public class StartPublishers {
     }
 
     private static void startPublishers(int n, int publishInterval, boolean randomInterval, Event event) {
-        //List<EventPublisher> publishers = new ArrayList<>();
-        //List<Thread> threads = new ArrayList<>();
+        logger.info("Starting {} publishers; interval: {}, is random: {}, event type: {}", n, publishInterval, randomInterval, event.getTopic());
         for (int i = 0; i < n; i++) {
             EventPublisher p = new EventPublisher(event, publishInterval, randomInterval);
-            //publishers.add(p);
             Thread t = new Thread(p);
-            //threads.add(new Thread(p));
             t.start();
         }
     }
